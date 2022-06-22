@@ -1,0 +1,36 @@
+
+.loginWrapper{
+    display: flex;
+    /* justify-content: center; */
+    align-items: stretch;
+    
+   
+}
+.leftPart{
+    margin-left: 0%;
+    margin-top: 5%;
+    width:70vw;
+
+}
+.leftPart img{
+    width:100%;
+
+}
+
+
+.loginCard{
+    margin-top: 10%;
+    width:27vw;
+}
+  
+.card-logo{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.card-logo img{
+    width:100%;
+    margin-top: 2%;
+}

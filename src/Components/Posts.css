@@ -1,0 +1,67 @@
+.video-container{
+    height: 80vh;
+    border-radius: 20px;
+    overflow: scroll;
+    margin-top: 2px;
+    background-color: black;
+    /* width: 600px; */
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+    border: 6px solid black;
+
+}
+
+.video-container::-webkit-scrollbar {
+    display: none;
+}
+
+.videos{
+    position: relative;
+}
+
+.fa{
+    display:flex;
+    position: absolute;
+    top: 1%;
+    left:2%;
+
+}
+.fa h4{
+    margin: 0;
+    color: white;
+    margin-top: 8%;
+    margin-left: 5%;
+
+}
+.chat-styling{
+    color: whitesmoke;
+    position: absolute;
+    bottom: 5%;
+    left: 13%
+}
+.modal-container{
+    display: flex;
+    height: 100%;
+    width:100%;
+}
+.video-modal{
+    height: 100%;
+    width: 50%;
+    padding: 0rem;
+}
+.comment-modal{
+    height: 100%;
+    width: 50%;
+    display: 'flex';
+    justify-content: center;
+    align-items: center;
+
+}
+.video-modal-styling{
+    height: 80vh;
+    width: 100%;
+}
+
+.card1{
+    height: 68vh;
+}
