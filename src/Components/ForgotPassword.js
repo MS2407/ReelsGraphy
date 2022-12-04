@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { useContext, useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -9,12 +9,11 @@ import logo from "../Assets/Logo1.png";
 import { createUseStyles } from "react-jss";
 import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
-import BackLeft from "../Assets/BackLeft.png";
 import { AuthContext } from "../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-export default function Login() {
+const ForgotPassword = () => {
   const useStyles = createUseStyles({
     text1: {
       color: "grey",
@@ -29,18 +28,17 @@ export default function Login() {
   const classes = useStyles();
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
+  const { forgotPassword } = useContext(AuthContext);
 
   const handleClick = async () => {
     setError("");
     setLoading(true);
-    await login(email, password)
+    await forgotPassword(email)
       .then(() => {
-        navigate("/");
+        setError("Email Sent Successfully");
       })
       .catch((error) => {
         setError(error.message);
@@ -51,7 +49,6 @@ export default function Login() {
     }, 2000);
     setLoading(false);
   };
-
   return (
     <div className="loginWrapper">
       {error && (
@@ -64,10 +61,7 @@ export default function Login() {
         </Alert>
       )}
 
-      <div className="leftPart">
-        <img src={BackLeft}></img>
-      </div>
-      <div className="loginCard">
+      <div className="forgotCard">
         <Card variant="outlined">
           <div className="card-logo">
             <img src={logo}></img>
@@ -83,22 +77,6 @@ export default function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <TextField
-              id="outlined-basic"
-              label="Password"
-              variant="outlined"
-              margin="dense"
-              size="small"
-              fullWidth={true}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <Typography className={classes.text2} variant="subtitle1">
-              <Link to="/forgot" style={{ textDecoration: "none", color: "blue" }}>
-                {" "}
-                Forgot Password?
-              </Link>
-            </Typography>
           </CardContent>
           <CardActions>
             <Button
@@ -109,7 +87,7 @@ export default function Login() {
               disabled={loading}
               onClick={handleClick}
             >
-              login
+              Send Link
             </Button>
           </CardActions>
 
@@ -131,4 +109,6 @@ export default function Login() {
       </h3>
     </div>
   );
-}
+};
+
+export default ForgotPassword;

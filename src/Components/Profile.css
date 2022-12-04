@@ -1,34 +1,59 @@
-.upper-part{
-    display: flex;
+.container {
+  background: linear-gradient(
+    110.5deg,
+    rgba(248, 196, 249, 0.66) 22.8%,
+    rgba(253, 122, 4, 0.15) 64.6%
+  );
+  height: 98vh;
+  max-width: 100vw;
+  overflow: hidden;
+}
+.upper-part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.info > h5 {
+  font: 2vmax "Roboto";
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: rgb(64, 22, 189);
+}
+
+.profile-img img {
+  height: 8rem;
+  width: 8rem;
+  border-radius: 50%;
+  border: 1px solid brown;
+  margin-top: 10px;
+}
+
+.profile-videos {
+  height: 74%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 20px;
+}
+
+.video-profile {
+  height: 13rem;
+  width: 13rem;
+  border-radius: 10%;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+
+.video-profile video {
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .profile-videos {
     justify-content: center;
-    align-items: center;
-}
-
-.info{
-    margin-left: 2rem;
-
-}
-.profile-img{
-    flex-basis: 20%;
-}
-.profile-img img{
-    height: 8rem;
-    width: 8rem;
-    border-radius: 50%;
-    margin-top: 2%;
-    margin-left: 10%;
-}
-
-.profile-videos{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
-.video-profile video{
-    height:20rem;
-    padding: 2rem;
-    border: solid purple;
-    border-radius: 20%;
+  }
 }

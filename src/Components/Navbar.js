@@ -1,47 +1,37 @@
-import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import { useContext } from 'react';
-import { AuthContext } from '../Context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import HomeIcon from '@mui/icons-material/Home';
-import ExploreIcon from '@mui/icons-material/Explore';
-import logo from '../Assets/Logo1.png'
-import Avatar from '@mui/material/Avatar';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+import MoreIcon from "@mui/icons-material/MoreVert";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
+import ExploreIcon from "@mui/icons-material/Explore";
+import logo from "../Assets/Logo1.png";
+import Avatar from "@mui/material/Avatar";
 
-export default function Navbar({userData}) {
+export default function Navbar({ userData }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const {logout}= useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleClickHome = ()=>{
-    navigate('/')
-  }
+  const handleClickHome = () => {
+    navigate("/");
+  };
 
-  const handleExplore = ()=>{
-    let win = window.open('https://github.com/MS2407') ;
+  const handleExplore = () => {
+    let win = window.open("https://github.com/MS2407");
     win.focus();
-  }
-
+  };
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -60,70 +50,94 @@ export default function Navbar({userData}) {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const handleLogout = ()=>{
-    logout();
-  }
-  const handleProfile = ()=>{
+  const handleLogout = () => {
+    logout().then(() => {
+      navigate("/login");
+    });
+  };
+  const handleProfile = () => {
     navigate(`/profile/${userData.userId}`);
-  }
+  };
 
-  const menuId = 'primary-search-account-menu';
+  const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
+        vertical: "top",
+        horizontal: "right",
       }}
       id={menuId}
       keepMounted
       transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
+        vertical: "top",
+        horizontal: "right",
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleProfile}><AccountCircleIcon/><p>&nbsp;&nbsp;</p>Profile</MenuItem>
-      <MenuItem onClick={handleLogout}><ExitToAppIcon /><p>&nbsp;&nbsp;</p>Logout</MenuItem>
+      <MenuItem onClick={handleProfile}>
+        <AccountCircleIcon />
+        <p>&nbsp;&nbsp;</p>Profile
+      </MenuItem>
+      <MenuItem onClick={handleLogout}>
+        <ExitToAppIcon />
+        <p>&nbsp;&nbsp;</p>Logout
+      </MenuItem>
     </Menu>
   );
 
-  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
+        vertical: "top",
+        horizontal: "right",
       }}
       id={mobileMenuId}
       keepMounted
       transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
+        vertical: "top",
+        horizontal: "right",
       }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-        <MenuItem onClick={handleProfile}><AccountCircleIcon/><p>&nbsp;&nbsp;</p>Profile</MenuItem>
-      <MenuItem onClick={handleLogout}><ExitToAppIcon /><p>&nbsp;&nbsp;</p>Logout</MenuItem>
+      <MenuItem onClick={handleProfile}>
+        <AccountCircleIcon />
+        <p>&nbsp;&nbsp;</p>Profile
+      </MenuItem>
+      <MenuItem onClick={handleLogout}>
+        <ExitToAppIcon />
+        <p>&nbsp;&nbsp;</p>Logout
+      </MenuItem>
     </Menu>
   );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color='secondary'>
+      <AppBar position="static" color="secondary">
         <Toolbar>
-            <div >
-               <img src={logo} style={{width:'20rem',cursor:'pointer'}} onClick={handleClickHome}></img>
-            </div>
-          
+          <div>
+            <img
+              src={logo}
+              style={{ width: "20rem", cursor: "pointer", borderRadius: 100 }}
+              onClick={handleClickHome} alt="logo"
+            ></img>
+          </div>
+
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <div style={{marginTop:'1.3rem'}}>
-               <HomeIcon onClick={handleClickHome} sx={{marginRight:'1.5rem',cursor:'pointer'}} />
-               <ExploreIcon onClick={handleExplore} sx={{marginRight:'1.5rem',cursor:'pointer'}}/>
+          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <div style={{ marginTop: "1.3rem" }}>
+              <HomeIcon
+                onClick={handleClickHome}
+                sx={{ marginRight: "1.5rem", cursor: "pointer" }}
+              />
+              <ExploreIcon
+                onClick={handleExplore}
+                sx={{ marginRight: "1.5rem", cursor: "pointer" }}
+              />
             </div>
             <IconButton
               size="large"
@@ -134,10 +148,12 @@ export default function Navbar({userData}) {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-            <Avatar src={userData.profileUrl}/>
+              <Avatar
+                src={userData && userData.profileUrl && userData.profileUrl}
+              />
             </IconButton>
           </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="show more"
