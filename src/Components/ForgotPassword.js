@@ -10,7 +10,6 @@ import { createUseStyles } from "react-jss";
 import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
 import { AuthContext } from "../Context/AuthContext";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const ForgotPassword = () => {
@@ -30,9 +29,8 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const { forgotPassword } = useContext(AuthContext);
 
+  const { forgotPassword } = useContext(AuthContext);
   const handleClick = async () => {
     setError("");
     setLoading(true);
@@ -64,7 +62,7 @@ const ForgotPassword = () => {
       <div className="forgotCard">
         <Card variant="outlined">
           <div className="card-logo">
-            <img src={logo}></img>
+            <img src={logo} alt="logoImg"></img>
           </div>
           <CardContent>
             <TextField

@@ -62,7 +62,7 @@ function UploadFile(props) {
         };
 
         database.posts.add(obj).then(async (ref) => {
-          let res = await database.users
+          await database.users
             .doc(props.user.userId)
             .update({
               postIds:
@@ -87,7 +87,7 @@ function UploadFile(props) {
 
   return (
     <div style={{ marginTop: "1%" }}>
-      {error != "" ? (
+      {error !== "" ? (
         <Alert severity="error">{error}</Alert>
       ) : (
         <>

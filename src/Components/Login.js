@@ -65,12 +65,12 @@ export default function Login() {
       )}
 
       <div className="leftPart">
-        <img src={BackLeft}></img>
+        <img src={BackLeft} alt="leftImg"></img>
       </div>
       <div className="loginCard">
         <Card variant="outlined">
           <div className="card-logo">
-            <img src={logo}></img>
+            <img src={logo} alt="logoImg"></img>
           </div>
           <CardContent>
             <TextField
@@ -94,7 +94,10 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
             <Typography className={classes.text2} variant="subtitle1">
-              <Link to="/forgot" style={{ textDecoration: "none", color: "blue" }}>
+              <Link
+                to="/forgot"
+                style={{ textDecoration: "none", color: "blue" }}
+              >
                 {" "}
                 Forgot Password?
               </Link>

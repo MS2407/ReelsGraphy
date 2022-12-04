@@ -57,6 +57,7 @@ function Posts({ userData }) {
       observer.disconnect();
       //remove all listerners , cleanup
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [posts]);
 
   useEffect(() => {
